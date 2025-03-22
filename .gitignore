@@ -1,3 +1,4 @@
+.DS_Store
 .env
 .bash_history
 .cache
@@ -12,4 +13,3 @@
 package-lock.json
 shrinkwrap.yaml
 node_modules/
-.DS_Store
