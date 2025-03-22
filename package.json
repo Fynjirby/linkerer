@@ -1,0 +1,17 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-rate-limit": "^7.5.0",
+    "node-fetch": "^2.7.0",
+    "sqlite3": "^5.1.6"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

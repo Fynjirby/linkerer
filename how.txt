@@ -1,0 +1,15 @@
+// Knock knock motherfucker it's the United States of America and I hear you guys got oil that isn't under my possession. 
+// So turn off the stove and return the oil to me before I have to resort to bringing democracy.
+
+> view db:
+
+sqlite3 .data/database.db
+SELECT * FROM urls;
+
+> remove if contains something:
+
+DELETE FROM urls WHERE original_url LIKE '%r8ss10n-f@@gg0t%';
+
+> remove by time ( - ):
+
+DELETE FROM urls WHERE created_at > datetime('now', '-10 minutes');

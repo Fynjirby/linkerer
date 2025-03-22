@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Linkerer</title>
+		<link rel="stylesheet" href="/style.css" />
+		<link
+			rel="shortcut icon"
+			href="https://cdn.glitch.global/4a205962-296a-4931-8e56-d6ccc4fc56b2/linkerer.png?v=1739950033440"
+			type="image/x-icon" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Linkerer</h1>
+			<input type="text" id="urlInput" placeholder="Enter URL" />
+			<div
+				class="cf-turnstile"
+				data-sitekey="0x4AAAAAAA74fdreonBGa2MB"
+				data-theme="light"></div>
+			<button onclick="shortenUrl()">Shorten!</button>
+			<p id="result"></p>
+			<button id="copyButton" style="display: none">Copy</button>
+			<div class="theme-switch">
+				<input type="checkbox" id="theme-switch" />
+				<label for="theme-switch"></label>
+			</div>
+			<h3>I WILL NEVER GIVE UP!</h3>
+		</div>
+		<a href="https://devs.fynjirby.dev/" class="devs-text">DEVs</a>
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+		<script src="/script.js"></script>
+		<script>
+			let dark = false;
+			const themeSwitch = document.getElementById("theme-switch");
+
+			function setTheme(isDark) {
+				document.body.classList.toggle("dark", isDark);
+				document
+					.querySelector(".cf-turnstile")
+					.setAttribute("data-theme", isDark ? "dark" : "light");
+				themeSwitch.checked = isDark;
+			}
+
+			const savedTheme = localStorage.getItem("darkTheme");
+
+			if (savedTheme !== null) {
+				setTheme(savedTheme === "true");
+			} else {
+				setTheme(
+					window.matchMedia("(prefers-color-scheme: dark)").matches
+				);
+			}
+
+			themeSwitch.addEventListener("change", () => {
+				const isDark = themeSwitch.checked;
+				setTheme(isDark);
+				localStorage.setItem("darkTheme", isDark);
+			});
+
+			window
+				.matchMedia("(prefers-color-scheme: dark)")
+				.addEventListener("change", (event) => {
+					if (localStorage.getItem("darkTheme") === null) {
+						setTheme(event.matches);
+					}
+				});
+
+			document
+				.getElementById("copyButton")
+				.addEventListener("click", () => {
+					const shortUrl = document
+						.getElementById("result")
+						.querySelector("a").href;
+					navigator.clipboard
+						.writeText(shortUrl)
+						.then(() => {
+							alert("Link copied to clipboard!");
+						})
+						.catch((err) => {
+							alert("Failed to copy link");
+						});
+				});
+		</script>
+	</body>
+</html>

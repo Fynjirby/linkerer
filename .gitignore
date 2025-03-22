@@ -1,0 +1,15 @@
+.env
+.bash_history
+.cache
+.config
+.data
+.local
+.nano
+.glitch-assets
+.glitchdotcom.json
+.node_repl_history
+.node-gyp
+package-lock.json
+shrinkwrap.yaml
+node_modules/
+.DS_Store
